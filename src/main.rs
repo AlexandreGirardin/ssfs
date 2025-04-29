@@ -29,7 +29,6 @@
 use actix_web::{middleware::Logger, App, HttpServer};
 use rustls::{Certificate, PrivateKey, ServerConfig};
 use rustls_pemfile::{certs, read_one};
-use std::env;
 
 #[derive(argh::FromArgs)]
 #[argh(description = "Secure Static File Server")]
@@ -100,7 +99,7 @@ fn get_cert() -> Vec<Certificate> {
 
 /// Return the server key embedded in the executable
 fn get_key() -> PrivateKey {
-    let key_bytes = include_bytes!(env::var("../assets/key.pem"));
+    let key_bytes = include_bytes!("../assets/key.pem");
     let mut key_reader = std::io::Cursor::new(key_bytes);
 
     match read_one(&mut key_reader).expect("cannot parse private key .pem file") {
