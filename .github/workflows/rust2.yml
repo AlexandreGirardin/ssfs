@@ -12,6 +12,8 @@ env:
 jobs:
   build:
     name: Build
+    env:
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,10 +21,6 @@ jobs:
         run: cargo build --verbose
       - name: Run tests
         run: cargo test --verbose
-      - name: Write private key to file
-        env:
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: echo $PRIVATE_KEY > ./assets/key.pem
 
   generate-sbom:
     name: Generate SBOM
