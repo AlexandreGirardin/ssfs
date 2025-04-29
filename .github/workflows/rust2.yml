@@ -29,10 +29,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      # TODO 3: installer cargo-cyclonedx
-      # https://github.com/CycloneDX/cyclonedx-rust-cargo
-      # - name: Install cargo-cyclonedx
-      #   run: 
+      - name: Install cargo-cyclonedx
+        run: cargo install cargo-cyclonedx
       # TODO 4: generer le SBOM
       # https://github.com/CycloneDX/cyclonedx-rust-cargo/blob/main/cargo-cyclonedx/README.md
       # - name: Generate SBOM
