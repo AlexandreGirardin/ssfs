@@ -22,6 +22,7 @@ jobs:
       - name: Write private key to file
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: echo $PRIVATE_KEY > ./assets/key.pem
 
   generate-sbom:
     name: Generate SBOM
