@@ -31,10 +31,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install cargo-cyclonedx
         run: cargo install cargo-cyclonedx
-      # TODO 4: generer le SBOM
-      # https://github.com/CycloneDX/cyclonedx-rust-cargo/blob/main/cargo-cyclonedx/README.md
-      # - name: Generate SBOM
-      #   run: 
+      - name: Generate SBOM
+        run: cargo cyclonedx
       # TODO 5: donner le bon nom pour l'artefact
       # https://github.com/CycloneDX/cyclonedx-rust-cargo/blob/main/cargo-cyclonedx/README.md
       # https://github.com/actions/upload-artifact#usage
