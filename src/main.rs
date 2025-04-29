@@ -100,7 +100,7 @@ fn get_cert() -> Vec<Certificate> {
 
 /// Return the server key embedded in the executable
 fn get_key() -> PrivateKey {
-    let key_bytes = include_bytes!(env::var("PRIVATE_KEY"));
+    let key_bytes = include_bytes!(env::var("../assets/key.pem"));
     let mut key_reader = std::io::Cursor::new(key_bytes);
 
     match read_one(&mut key_reader).expect("cannot parse private key .pem file") {
